@@ -5,6 +5,7 @@
 import time
 import asyncio
 from pyrogram import Client, filters
+from pyrogram.types import Message
 from pyrogram.errors import FloodWait, UserDeactivatedBan
 from configs import Config
 
@@ -32,7 +33,7 @@ async def kanger(msg):
 
 
 @User.on_message((filters.text | filters.media) & ~filters.edited)
-async def main(client, message):
+async def main(client: Client, message: Message):
     # Checks
     if (Config.FORWARD_TO_CHAT_ID and Config.FORWARD_FROM_CHAT_ID and Config.USER_ID) is None:
         try:
